@@ -4,7 +4,7 @@ import headerDotStyle from '../styles/HeaderBtn.module.css';
 export default function header() {
   return (
     <>
-      <header className='mt-4 flex h-10 justify-between'>
+      <header className='fixed z-50 mt-4 flex h-10 w-full justify-between px-4'>
         <div className='relative h-full w-52'>
           <Image src='/logo_996_b.svg' fill={true} alt={'left logo'} />
         </div>
