@@ -23,12 +23,12 @@ export default function top() {
       x: '-250vw', //x方向に移動させる
       ease: 'out',
       scrollTrigger: {
-        markers: true,
         trigger: area.current, //トリガー
         start: 'top top', //開始位置
         end: '+=' + '1000vh', //終了位置
         pin: true, //ピン留め
         scrub: true, //スクロール量に応じて動かす
+        // pinSpacing: false,
       },
     });
   };
@@ -36,7 +36,7 @@ export default function top() {
   return (
     <>
       <article
-        className='relative overflow-hidden'
+        className='relative'
         style={{ width: '100vx', height: '100vh' }}
         ref={area}
       >
