@@ -1,162 +1,81 @@
 import { ReactNode, useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import TestContent from '../testContent';
 
 type mainContentProps = {
-  children: ReactNode;
+  contents: ReactNode[];
 };
-export default function mainContentLayout({ children }: mainContentProps) {
+export default function mainContentLayout({ contents }: mainContentProps) {
   gsap.registerPlugin(ScrollTrigger);
+  const boxRef = useRef(null);
+  const boxRef2 = useRef(null);
+  const boxRef3 = useRef(null);
+  const area = useRef(null);
   useLayoutEffect(() => {
-    const slides: gsap.TweenTarget[] = gsap.utils.toArray('.slide');
+    logoAppearAnimation();
+  }, []);
 
-    //これでも出来る
+  const logoAppearAnimation = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: '#container',
-        // pin: true,
-        // pinSpacing: true,
-        scrub: 1,
-        start: 'top top',
-        // end: 'bottom bottom',
+        trigger: area.current, //トリガー
+        start: 'top top', //開始位置
+        end: '+=3000', //終了位置
+        pin: true, //ピン留め
+        scrub: true, //スクロール量に応じて動かす
+        snap: {
+          snapTo: 'labelsDirectional', // snap to the closest label in the timeline
+          duration: { min: 0.2, max: 5 }, // the snap animation should be at least 0.2 seconds, but no more than 3 seconds (determined by velocity)
+          delay: 0.2, // wait 0.2 seconds from the last scroll event before doing the snapping
+          ease: 'power1.inOut', // the ease of the snap animation ("power3" by default)
+          directional: true,
+        },
       },
-      defaults: { ease: 'none', duration: 1 },
     });
 
-    // slides.forEach((slide: gsap.TweenTarget, i) => {
-    //   if (i == 0) {
-    //     tl.to(slide, {
-    //       xPercent: 100,
-    //       scrollTriger: {
-    //         trigger: '#test',
-    //         start: 'top top', //開始位置
-    //         end: '+=' + '100000vh', //終了位置
-    //         pin: true, //ピン留め
-    //         scrub: true, //スクロール量に応じて動かす
-    //       },
-    //     });
-    //   } else if (i == 1) {
-    //     tl.from(slide, {
-    //       xPercent: 100,
-    //     });
-    //   } else if (i == 2) {
-    //     tl.from(slide, {
-    //       xPercent: 100,
-    //     });
-    //   }
-    // });
-
-    //これでも出来る
-    // const tl = gsap.timeline();
-    console.log('ASDFDSAFD');
-    slides.forEach((slide: gsap.TweenTarget, i) => {
-      if (i == 0) {
-        tl.from(slide, {
-          x: '-100vw', //x方向に移動させる
-          ease: 'out',
-          //   scrollTrigger: {
-          //     trigger: '#one', //トリガー
-          //     start: 'top top', //開始位置
-          //     end: '+=1000', //終了位置
-          //     pin: true, //ピン留め
-          //     scrub: true, //スクロール量に応じて動かす
-
-          //     markers: true,
-          //   },
-          //   toggleActions: 'play reverse none reverse',
-        });
-      } else if (i == 1) {
-        tl.from(slide, {
-          x: '100vw', //x方向に移動させる
-          ease: 'out',
-          //   scrollTrigger: {
-          //     trigger: '#two', //トリガー
-          //     start: 'top top', //開始位置
-          //     end: '+=1000', //終了位置
-          //     pin: true, //ピン留め
-          //     scrub: true, //スクロール量に応じて動かす
-          //   },
-        });
-      } else if (i == 2) {
-        tl.from(slide, {
-          x: '100vw', //x方向に移動させる
-          ease: 'out',
-          //   scrollTrigger: {
-          //     trigger: '#three', //トリガー
-          //     start: 'top top', //開始位置
-          //     end: '+=1000', //終了位置
-          //     pin: true, //ピン留め
-          //     scrub: true, //スクロール量に応じて動かす
-          //   },
-        });
-      }
+    tl.addLabel('start').from(boxRef.current, {
+      width: '100vw',
+      ease: 'out',
+      delay: 0.5,
     });
 
-    // ScrollTrigger.create({
-    //   animation: tl,
-    //   trigger: '#container',
-    //   start: 'top top',
-    //   scrub: true,
-    //   pin: true,
-    //   anticipatePin: 1,
-    //   markers: true,
-    // });
-
-    // const tl = gsap.timeline();
-
-    // tl.to(slides[0], {
-    //   x: '-100vw', //x方向に移動させる
-    //   ease: 'out',
-    //   scrollTrigger: {
-    //     trigger: '#test', //トリガー
-    //     start: 'top top', //開始位置
-    //     end: '+=' + '10000vh', //終了位置
-    //     pin: true, //ピン留め
-    //     scrub: true, //スクロール量に応じて動かす
-    //     pinSpacing: false,
-    //   },
-    // });
-  });
-
+    tl.addLabel('middle').from(boxRef2.current, {
+      height: '100vh',
+      ease: 'out',
+      delay: 0.5,
+    });
+    tl.addLabel('end').from(boxRef3.current, {
+      delay: 0.1,
+    });
+  };
   return (
-    <>
-      <div id='container' className='relative'>
-        <section
-          className='panel slide sticky top-0  bg-red-50'
-          id='one'
-          style={{ height: '100vh' }}
-        >
-          Sliding Element ONE<a href='#two'>goto next Panel</a>
-        </section>
-        <section
-          className='panel slide sticky top-0   bg-gray-700'
-          id='two'
-          style={{ height: '100vh' }}
-        >
-          Sliding Element TWO<a href='#three'>goto next Panel</a>
-        </section>
-        <section
-          className='panel slide sticky top-0  bg-purple-400'
-          id='three'
-          style={{ height: '100vh' }}
-        >
-          Sliding Element THREE<a href='#four'>goto next Panel</a>
-        </section>
-        {/* <section className='panel slide  h-80 bg-green-300' id='four'>
-          Sliding Element FOUR
-        </section> */}
-      </div>
+    <div
+      className='grid grid-flow-row grid-cols-3 grid-rows-4'
+      style={{ height: '100vh', width: '100vw' }}
+      ref={area}
+    >
       <div
-        className='panel sticky top-0 bg-red-900'
-        style={{ height: '100vh' }}
-      ></div>
-
-      <div
-        className='panel sticky top-0 bg-red-500'
-        style={{ height: '100vh' }}
+        className='col-span-2 row-span-4 h-full w-full bg-red-400'
+        style={{ zIndex: '999' }}
+        ref={boxRef}
       >
-        END
+        {/* {contents[0]} */}
+        <TestContent />
       </div>
-    </>
+      <div
+        className='col-start-3 row-span-2 h-full w-full bg-purple-400 '
+        style={{ zIndex: '998' }}
+        ref={boxRef2}
+      >
+        {contents[1]}
+      </div>
+      <div
+        className='col-start-3 row-span-2 h-full w-full bg-green-400 '
+        ref={boxRef3}
+      >
+        {contents[2]}
+      </div>
+    </div>
   );
 }

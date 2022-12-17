@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { gsap } from 'gsap';
-import { useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 // doesn't support ES Modules, so you would need to import the UMD files
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
@@ -8,6 +8,9 @@ export default function top() {
   gsap.registerPlugin(ScrollTrigger);
   const boxRef = useRef(null);
   const area = useRef(null);
+  useLayoutEffect(() => {
+    logoAppearAnimation();
+  }, []);
   const logoAppearAnimation = () => {
     const tl = gsap.timeline();
     tl.from(boxRef.current, { y: '50%', opacity: 0, duration: 0.5 });
@@ -51,7 +54,7 @@ export default function top() {
               fill={true}
               alt={'right logo'}
               className='w-auto'
-              onLoadingComplete={logoAppearAnimation}
+              // onLoadingComplete={logoAppearAnimation}
             />
           </div>
         </div>
