@@ -37,7 +37,7 @@ export default function mainContentLayout({ contents }: mainContentProps) {
     tl.addLabel('start').from(boxRef.current, {
       width: '100vw',
       ease: 'out',
-      delay: 0.5,
+      delay: 1,
     });
 
     tl.addLabel('moveRight').fromTo(
@@ -45,12 +45,12 @@ export default function mainContentLayout({ contents }: mainContentProps) {
       {
         height: '100vh',
         ease: 'out',
-        delay: 0.5,
+        delay: 1,
       },
       {
         y: '-100vh',
         ease: 'out',
-        delay: 0.5,
+        delay: 1,
       }
     );
     tl.addLabel('moveUpBox3').to(

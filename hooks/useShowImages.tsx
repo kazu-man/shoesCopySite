@@ -23,7 +23,7 @@ export default function useShoeImages(shoeImagesProps: shoeImagesProps) {
     });
   };
 
-  const shieImageEl = (
+  const shoeImageEl = (
     <Image
       src={shoeImagesProps.shoes[index]}
       fill={true}
@@ -36,6 +36,6 @@ export default function useShoeImages(shoeImagesProps: shoeImagesProps) {
   return {
     next,
     before,
-    shieImageEl,
+    shoeImageEl,
   };
 }

@@ -29,7 +29,7 @@ export default function firstBlockContents() {
     </div>
   );
 
-  const testContent = [content1, content2, content3];
+  const contents = [content1, content2, content3];
 
-  return <MainContentLayout contents={testContent}></MainContentLayout>;
+  return <MainContentLayout contents={contents}></MainContentLayout>;
 }

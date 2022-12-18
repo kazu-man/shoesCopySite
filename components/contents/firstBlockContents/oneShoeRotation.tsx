@@ -23,7 +23,7 @@ export default function oneShoeRotation() {
       '/shoes/shoe12.webp',
     ],
   };
-  const { next, before, shieImageEl } = useShoeImages(targetShoeList);
+  const { next, before, shoeImageEl } = useShoeImages(targetShoeList);
   useLayoutEffect(() => {
     logoAppearAnimation();
   }, []);
@@ -53,7 +53,7 @@ export default function oneShoeRotation() {
   };
   return (
     <div className='relative h-full w-full bg-[#c6433c]' ref={area}>
-      {shieImageEl}
+      {shoeImageEl}
     </div>
   );
 }
