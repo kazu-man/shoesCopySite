@@ -8,19 +8,29 @@ export default function top() {
   gsap.registerPlugin(ScrollTrigger);
   const boxRef = useRef(null);
   const area = useRef(null);
+  const bandRef = useRef(null);
   useLayoutEffect(() => {
     logoAppearAnimation();
   }, []);
   const logoAppearAnimation = () => {
     const tl = gsap.timeline();
     tl.from(boxRef.current, { y: '50%', opacity: 0, duration: 0.5 });
-    tl.to(boxRef.current, {
-      width: '350vw',
-      height: '80vh',
-      duration: 1,
+    tl.from(bandRef.current, {
+      xPercent: -100,
+      duration: 1.5,
       ease: 'power1.inOut',
-      delay: 0.3,
     });
+    tl.to(
+      boxRef.current,
+      {
+        width: '350vw',
+        height: '80vh',
+        duration: 1,
+        ease: 'power1.inOut',
+        delay: 0.3,
+      },
+      '<'
+    );
 
     tl.to(boxRef.current, {
       x: '-250vw', //x方向に移動させる
@@ -57,6 +67,11 @@ export default function top() {
               // onLoadingComplete={logoAppearAnimation}
             />
           </div>
+          <div
+            className='bg-[#c6433c]'
+            ref={bandRef}
+            style={{ width: '100vx', height: '2vh' }}
+          ></div>
         </div>
       </article>
     </>
