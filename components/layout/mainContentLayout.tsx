@@ -1,12 +1,15 @@
 import { ReactNode, useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import TestContent from '../testContent';
 
 type mainContentProps = {
   contents: ReactNode[];
+  scrollAmount: number;
 };
-export default function mainContentLayout({ contents }: mainContentProps) {
+export default function mainContentLayout({
+  contents,
+  scrollAmount,
+}: mainContentProps) {
   gsap.registerPlugin(ScrollTrigger);
   const boxRef = useRef(null);
   const boxRef2 = useRef(null);
@@ -21,7 +24,7 @@ export default function mainContentLayout({ contents }: mainContentProps) {
       scrollTrigger: {
         trigger: area.current, //トリガー
         start: 'top top', //開始位置
-        end: '+=3000', //終了位置
+        end: '+=' + scrollAmount, //終了位置
         pin: true, //ピン留め
         scrub: true, //スクロール量に応じて動かす
         snap: {
@@ -60,8 +63,7 @@ export default function mainContentLayout({ contents }: mainContentProps) {
         style={{ zIndex: '999' }}
         ref={boxRef}
       >
-        {/* {contents[0]} */}
-        <TestContent />
+        {contents[0]}
       </div>
       <div
         className='col-start-3 row-span-2 h-full w-full bg-purple-400 '
