@@ -1,15 +1,9 @@
 import Head from 'next/head';
-import OneShoeRotation from '../components/contents/oneShoeRotation';
 import Header from '../components/header';
-import MainContentLayout from '../components/layout/mainContentLayout';
 import Top from '../components/top';
-
+import FirstBlockContents from '../components/contents/firstBlockContents/firstBlockContents';
+export const SCROLL_AMOUNT = 3000;
 export default function Home() {
-  const content1 = <OneShoeRotation />;
-  const content2 = <div>TEST2</div>;
-  const content3 = <div>TEST3</div>;
-
-  const testContent = [content1, content2, content3];
   return (
     <div>
       <Head>
@@ -19,10 +13,7 @@ export default function Home() {
       </Head>
       <Header />
       <Top />
-      <MainContentLayout
-        contents={testContent}
-        scrollAmount={3000}
-      ></MainContentLayout>
+      <FirstBlockContents />
     </div>
   );
 }

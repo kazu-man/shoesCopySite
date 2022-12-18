@@ -1,7 +1,8 @@
 import { useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import useShoeImages from '../../hooks/useShowImages';
+import useShoeImages from '../../../hooks/useShowImages';
+import { SCROLL_AMOUNT } from '../../../pages';
 
 export default function oneShoeRotation() {
   gsap.registerPlugin(ScrollTrigger);
@@ -34,8 +35,7 @@ export default function oneShoeRotation() {
       scrollTrigger: {
         trigger: area.current, //トリガー
         start: 'top top', //開始位置
-        // end: 'bottom top', //終了位置
-        end: '+=3000', //終了位置
+        end: '+=' + SCROLL_AMOUNT, //終了位置
         scrub: true, //スクロール量に応じて動かす
         onUpdate: (self) => {
           imagePacer++;
