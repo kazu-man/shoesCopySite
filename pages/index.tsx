@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Header from '../components/header';
 import Top from '../components/top';
 import FirstBlockContents from '../components/contents/firstBlockContents/firstBlockContents';
+import SecondBlockContents from '../components/contents/secondBlockBontents/secondBlockContents';
 export const SCROLL_AMOUNT = 5000;
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Header />
       <Top />
       <FirstBlockContents />
+      <SecondBlockContents />
     </div>
   );
 }

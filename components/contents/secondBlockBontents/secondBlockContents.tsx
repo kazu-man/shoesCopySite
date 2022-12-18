@@ -1,13 +1,13 @@
 import MainContentLayout from '../../layout/mainContentLayout';
-import OneShoeRotation from './oneShoeRotation';
+import ShoesRotation from './shoesRotation';
 import SecondBlock from '../secondBlock';
 import ThirdBlock from '../thirdBlock';
 
-export default function firstBlockContents() {
+export default function secondBlockContents() {
   const contents = [
-    <OneShoeRotation key='first' />,
-    <SecondBlock image='/girl1.jpg' key='second' />,
-    <ThirdBlock image='/girl2.jpg' key='third' />,
+    <ShoesRotation key='first' />,
+    <SecondBlock image='/girl3.jpg' key='second' />,
+    <ThirdBlock image='/girl4.jpg' key='third' />,
   ];
 
   return <MainContentLayout contents={contents}></MainContentLayout>;
