@@ -40,7 +40,7 @@ export default function oneShoeRotation() {
         onUpdate: (self) => {
           imagePacer++;
 
-          if (imagePacer % 10 == 0) {
+          if (imagePacer % 2 == 0) {
             if (self.direction > 0) {
               next();
             } else {

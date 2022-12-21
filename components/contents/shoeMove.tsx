@@ -46,9 +46,9 @@ export default function shoeMove() {
     });
 
     tl.to(slides, {
-      x: '-=' + client_w * 3,
+      x: '-=' + client_w * CONTENT_NUM,
       modifiers: {
-        x: gsap.utils.unitize((x) => parseFloat(x) % (client_w * CONTENT_NUM)),
+        x: gsap.utils.unitize((x) => parseFloat(x) % client_w),
       },
       ease: 'none',
       //   repeat: -1,

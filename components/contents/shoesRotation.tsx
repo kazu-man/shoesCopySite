@@ -21,7 +21,7 @@ export default function shoesRotation() {
       },
     });
 
-    tl.to(rotationTarget.current, { rotation: 360 });
+    tl.to(rotationTarget.current, { rotation: 720 });
   };
   return (
     <div
