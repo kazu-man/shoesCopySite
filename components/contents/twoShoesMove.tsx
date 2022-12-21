@@ -19,7 +19,6 @@ export default function twoShoesMove() {
         start: 'top bottom', //開始位置
         end: 'bottom top',
         scrub: true, //スクロール量に応じて動かす
-        markers: true,
       },
     });
     tl.from(shoeLeft.current, { xPercent: -100 });
