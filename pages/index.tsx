@@ -1,11 +1,39 @@
 import Head from 'next/head';
 import Header from '../components/header';
 import Top from '../components/top';
-import FirstBlockContents from '../components/contents/firstBlockContents/firstBlockContents';
-import SecondBlockContents from '../components/contents/secondBlockBontents/secondBlockContents';
-import ThirdBlockContents from '../components/contents/thirdBlockContents.tsx/thirdBlockContents';
+import OneShoeRotation from '../components/contents/oneShoeRotation';
+import SecondBlock from '../components/contents/secondBlock';
+import ThirdBlock from '../components/contents/thirdBlock';
+import ShoeMove from '../components/contents/shoeMove';
+import ShoesRotation from '../components/contents/shoesRotation';
+import MainContentLayout from '../components/layout/mainContentLayout';
+import TwoShoesMove from '../components/contents/twoShoesMove';
 export const SCROLL_AMOUNT = 5000;
 export default function Home() {
+  const firstContents = [
+    <OneShoeRotation key='first' />,
+    <SecondBlock image='/girl1.jpg' key='second' />,
+    <ThirdBlock image='/girl2.jpg' key='third' />,
+  ];
+
+  const secondContents = [
+    <ShoesRotation key='first' />,
+    <SecondBlock image='/girl3.jpg' key='second' />,
+    <ThirdBlock image='/girl4.jpg' key='third' />,
+  ];
+
+  const thirdContents = [
+    <ShoeMove key='first' />,
+    <SecondBlock image='/girl5.jpg' key='second' />,
+    <ThirdBlock image='/girl6.jpg' key='third' />,
+  ];
+
+  const forthContents = [
+    <TwoShoesMove key='first' />,
+    <SecondBlock image='/family2.jpg' key='second' />,
+    <ThirdBlock image='/family.jpg' key='third' />,
+  ];
+
   return (
     <div>
       <Head>
@@ -15,9 +43,11 @@ export default function Home() {
       </Head>
       <Header />
       <Top />
-      <FirstBlockContents />
-      <SecondBlockContents />
-      <ThirdBlockContents />
+
+      <MainContentLayout contents={firstContents}></MainContentLayout>
+      <MainContentLayout contents={secondContents}></MainContentLayout>
+      <MainContentLayout contents={thirdContents}></MainContentLayout>
+      <MainContentLayout contents={forthContents}></MainContentLayout>
     </div>
   );
 }

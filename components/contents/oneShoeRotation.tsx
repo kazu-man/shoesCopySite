@@ -1,8 +1,8 @@
 import { useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import useShoeImages from '../../../hooks/useShowImages';
-import { SCROLL_AMOUNT } from '../../../pages';
+import useShoeImages from '../../hooks/useShowImages';
+import { SCROLL_AMOUNT } from '../../pages';
 
 export default function oneShoeRotation() {
   gsap.registerPlugin(ScrollTrigger);

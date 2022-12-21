@@ -37,7 +37,7 @@ export default function mainContentLayout({ contents }: mainContentProps) {
     tl.addLabel('start').from(boxRef.current, {
       width: '100vw',
       ease: 'out',
-      delay: 1,
+      delay: 0.5,
     });
 
     tl.addLabel('moveRight').fromTo(
