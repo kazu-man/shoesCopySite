@@ -20,5 +20,6 @@ module.exports = {
     'no-undef': 'off',
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
+    'tailwindcss/no-custom-classname': 'off',
   },
 };
