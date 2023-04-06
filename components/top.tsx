@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { gsap } from 'gsap';
-import { useLayoutEffect, useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 // doesn't support ES Modules, so you would need to import the UMD files
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
@@ -9,7 +9,7 @@ export default function top() {
   const boxRef = useRef(null);
   const area = useRef(null);
   const bandRef = useRef(null);
-  useLayoutEffect(() => {
+  useEffect(() => {
     logoAppearAnimation();
   }, []);
   const logoAppearAnimation = () => {

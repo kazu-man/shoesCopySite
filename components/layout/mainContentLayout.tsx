@@ -1,4 +1,4 @@
-import { ReactNode, useLayoutEffect, useRef } from 'react';
+import { ReactNode, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { SCROLL_AMOUNT } from '../../pages';
@@ -12,7 +12,7 @@ export default function mainContentLayout({ contents }: mainContentProps) {
   const boxRef2 = useRef(null);
   const boxRef3 = useRef(null);
   const area = useRef(null);
-  useLayoutEffect(() => {
+  useEffect(() => {
     logoAppearAnimation();
   }, []);
 

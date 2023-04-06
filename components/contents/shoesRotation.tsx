@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Image from 'next/image';
@@ -7,7 +7,7 @@ export default function shoesRotation() {
   gsap.registerPlugin(ScrollTrigger);
   const area = useRef(null);
   const rotationTarget = useRef(null);
-  useLayoutEffect(() => {
+  useEffect(() => {
     logoAppearAnimation();
   }, []);
 

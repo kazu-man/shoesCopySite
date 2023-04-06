@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import useShoeImages from '../../hooks/useShowImages';
@@ -24,7 +24,7 @@ export default function oneShoeRotation() {
     ],
   };
   const { next, before, shoeImageEl } = useShoeImages(targetShoeList);
-  useLayoutEffect(() => {
+  useEffect(() => {
     logoAppearAnimation();
   }, []);
 

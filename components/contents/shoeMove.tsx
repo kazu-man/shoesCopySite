@@ -1,4 +1,4 @@
-import { ReactNode, useLayoutEffect, useRef } from 'react';
+import { ReactNode, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Image from 'next/image';
@@ -28,7 +28,7 @@ export default function shoeMove() {
     shoesContents.push(baseContent(i));
   }
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     logoAppearAnimation();
   }, []);
 
