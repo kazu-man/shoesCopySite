@@ -9,7 +9,7 @@ jobs:
       - run: npm run build # NextのSSGアプリケーションのビルド実行
       - run:
           name: Copy to S3
-          command: aws s3 cp ./build $AWS_S3_BUCKET_NAME --recursive --acl public-read
+          command: aws s3 cp ./out $AWS_S3_BUCKET_NAME --recursive --acl public-read
           ### --recursive: ディレクトリ内全てのファイルをコピー
           ### --acl public-read: S3のコンテンツを外部へ公開する
 
