@@ -1,0 +1,21 @@
+version: 2.1
+jobs:
+  copy-assets-to-s3: # copy-assets-to-s3というjobの詳細
+    executor: aws-cli/default
+    steps:
+      - checkout # working_directoryへチェックアウト
+      - aws-cli/setup # Orbのコマンド。AWS CLIの設定が行われる
+      - run: npm install
+      - run: npm run build # NextのSSGアプリケーションのビルド実行
+      - run:
+          name: Copy to S3
+          command: aws s3 cp ./build $AWS_S3_BUCKET_NAME --recursive --acl public-read
+          ### --recursive: ディレクトリ内全てのファイルをコピー
+          ### --acl public-read: S3のコンテンツを外部へ公開する
+
+orbs:
+  aws-cli: circleci/aws-cli@1.4.0
+workflows:
+  aws-cli:
+    jobs:
+      - copy-assets-to-s3 # copy-assets-to-s3というjobが実行される
