@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { gsap } from 'gsap';
-import { useEffect, useLayoutEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 // doesn't support ES Modules, so you would need to import the UMD files
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 

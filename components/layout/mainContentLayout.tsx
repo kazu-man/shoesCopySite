@@ -24,20 +24,21 @@ export default function mainContentLayout({ contents }: mainContentProps) {
         end: '+=' + SCROLL_AMOUNT, //終了位置
         pin: true, //ピン留め
         scrub: true, //スクロール量に応じて動かす
-        snap: {
-          snapTo: 'labelsDirectional', // snap to the closest label in the timeline
-          duration: { min: 0.2, max: 5 }, // the snap animation should be at least 0.2 seconds, but no more than 3 seconds (determined by velocity)
-          delay: 0.2, // wait 0.2 seconds from the last scroll event before doing the snapping
-          ease: 'power1.inOut', // the ease of the snap animation ("power3" by default)
-          directional: true,
-        },
+        // 中途半端な場所でスクロールを止めた際に、キリがいいところまで自動でスクロールする処理
+        // snap: {
+        //   snapTo: 'labelsDirectional', // snap to the closest label in the timeline
+        //   duration: { min: 0.2, max: 5 }, // the snap animation should be at least 0.2 seconds, but no more than 3 seconds (determined by velocity)
+        //   delay: 0.2, // wait 0.2 seconds from the last scroll event before doing the snapping
+        //   ease: 'power1.inOut', // the ease of the snap animation ("power3" by default)
+        //   directional: true,
+        // },
       },
     });
 
     tl.addLabel('start').from(boxRef.current, {
       width: '100vw',
       ease: 'out',
-      delay: 0.5,
+      delay: 0.2,
     });
 
     tl.addLabel('moveRight').fromTo(
@@ -45,12 +46,12 @@ export default function mainContentLayout({ contents }: mainContentProps) {
       {
         height: '100vh',
         ease: 'out',
-        delay: 1,
+        delay: 0.5,
       },
       {
         y: '-100vh',
         ease: 'out',
-        delay: 1,
+        delay: 0.8,
       }
     );
     tl.addLabel('moveUpBox3').to(
@@ -63,7 +64,7 @@ export default function mainContentLayout({ contents }: mainContentProps) {
       '<'
     );
     tl.addLabel('end').from(boxRef3.current, {
-      delay: 0.1,
+      delay: 0.5,
     });
   };
   return (

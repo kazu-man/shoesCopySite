@@ -1,0 +1,13 @@
+.menuLine {
+  font-size: 12em;
+  font-weight: 400;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.menuTextArea {
+  transition: 0.5s ease-in;
+  color: white;
+}
+.menuTextArea:hover {
+  color: red;
+}
